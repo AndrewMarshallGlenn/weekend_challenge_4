@@ -4,6 +4,9 @@ body{
     padding-left: 20%;
     padding-right: 20%;
 }
+button{
+    box-shadow: 2px 2px black;
+}
 #taskInput{
     border: double;
     background-color: bisque;
@@ -17,11 +20,13 @@ body{
     border: solid;
     text-decoration-color: black;
     background-color: bisque;
+    padding-bottom: 5%;
 
 }
 .completed{
     background-color: cornflowerblue;
     text-decoration-color: black;
+    margin-right: 7px;
 }
 .remove{
     background-color: crimson;
@@ -32,6 +37,7 @@ h1{
 }
 .reset{
     background-color: lightcoral;
+    margin-right: 7px;
 }
 .task .reset{
     background-color: gray;
@@ -39,4 +45,7 @@ h1{
 .taskInput{
     height: 25px;
     width: 75%;
+}
+.task{
+    padding-bottom: 5px;
 }
