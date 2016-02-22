@@ -31,7 +31,9 @@ function addTask(){
 }
 
 function completeTask(){
-    var update = $(this).parent().data();
+    var update = {};
+    update.id = $(this).parent().data();
+    update.status = 'true';
     $.ajax({
         type: 'PUT',
         url:'./routes/serverRequests',
@@ -48,6 +50,28 @@ function completeTask(){
     $(this).addClass('reset');
     $(this).removeClass('completed');
     $(this).text('reset');
+
+}
+function resetTask(){
+    var update = {};
+    update.id = $(this).parent().data();
+    update.status = 'false'
+    $.ajax({
+        type: 'PUT',
+        url:'./routes/serverRequests',
+        data: update,
+        success: function(data) {
+            if(data) {
+                console.log('from server:', data);
+            } else {
+                console.log('error');
+            }
+
+        }
+    });
+    $(this).addClass('completed');
+    $(this).removeClass('reset');
+    $(this).text('completed');
 
 }
 
@@ -101,5 +125,6 @@ $(document).ready(function(){
     $('#submitButton').on('click', addTask);
     $('#taskList').on('click', '.completed', completeTask);
     $('#taskList').on('click', '.remove', removeTask);
+    $('#taskList').on('click', '.reset', resetTask);
     updateDom();
 });

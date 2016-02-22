@@ -50,11 +50,25 @@ router.delete('/', function(req, res) {
 
 router.put('/', function(req, res) {
     var updateTask = {
-        id: req.body.id
+        id: req.body.id,
+        status: req.body.status
     };
 
     pg.connect(connect, function(err, client) {
-        client.query("UPDATE tasks SET completed = 'true' WHERE id = $1;",
+        if(updateTask.status === 'true'){
+            client.query("UPDATE tasks SET completed = 'true' WHERE id = $1;",
+                [updateTask.id],
+                function (err, result) {
+                    if(err) {
+                        console.log("Error deleting data: ", err);
+                        res.send(false);
+                    } else {
+                        console.log(result);
+                        res.send(result);
+                    }
+                })
+    } else {
+        client.query("UPDATE tasks SET completed = 'false' WHERE id = $1;",
             [updateTask.id],
             function (err, result) {
                 if(err) {
@@ -64,9 +78,11 @@ router.put('/', function(req, res) {
                     console.log(result);
                     res.send(result);
                 }
-            });
-    });
 
+        });
+     }
+
+});
 });
 
 router.get('/', function(req, res) {

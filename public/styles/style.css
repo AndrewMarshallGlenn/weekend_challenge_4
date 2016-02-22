@@ -1,0 +1,42 @@
+body{
+    background-color: khaki;
+    text-decoration-color: darkslateblue;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+#taskInput{
+    border: double;
+    background-color: bisque;
+
+}
+#submitButton{
+    background-color: cornflowerblue;
+    text-decoration-color: black;
+}
+#taskList{
+    border: solid;
+    text-decoration-color: black;
+    background-color: bisque;
+
+}
+.completed{
+    background-color: cornflowerblue;
+    text-decoration-color: black;
+}
+.remove{
+    background-color: crimson;
+    text-decoration-color: black;
+}
+h1{
+    text-decoration-color: darkgreen;
+}
+.reset{
+    background-color: lightcoral;
+}
+.task .reset{
+    background-color: gray;
+}
+.taskInput{
+    height: 25px;
+    width: 75%;
+}
